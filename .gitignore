@@ -8,13 +8,24 @@ __pycache__/
 
 # Distribution / packaging
 .Python
-env/
-venv/
-ENV/
-env.bak/
-venv.bak/
-.poetry
-poetry.lock
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
 
 # PyInstaller
 #  Usually these files are written by a python script from a template
@@ -38,8 +49,8 @@ coverage.xml
 *.cover
 *.py,cover
 .hypothesis/
-*.hypothesis/
-pytest_cache/
+.pytest_cache/
+cover/
 
 # Translations
 *.mo
@@ -49,7 +60,6 @@ pytest_cache/
 *.log
 local_settings.py
 db.sqlite3
-db.sqlite3-journal
 
 # Flask stuff:
 instance/
@@ -60,7 +70,10 @@ instance/
 
 # Sphinx documentation
 docs/_build/
-doc/source/_build
+docsrc/_build/
+
+# PyBuilder
+target/
 
 # Jupyter Notebook
 .ipynb_checkpoints
@@ -75,21 +88,29 @@ ipython_config.py
 # celery beat schedule file
 celerybeat-schedule
 
-# SageMath parsed files
-*.sage.py
+# dotenv
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Spyder project settings
+.spyderproject
+.spyderproject
+
+# Rope project settings
+.ropeproject
+
+# mkdocs documentation
+/site
+
+# mypy
+.mypy_cache/
 
 # Environments
-.env
-.env.bak
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
-
-# Editor directories and files
-.idea
-.vscode
+.idea/
+.vscode/
 *.swp
-*~
-.project
-.pydevproject
