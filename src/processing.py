@@ -1,6 +1,9 @@
-from typing import List, Dict, Optional
+from typing import Dict
+from typing import List
+from typing import Optional
 
-def filter_by_state(data: List[Dict], state: Optional[str] = 'EXECUTED') -> List[Dict]:
+
+def filter_by_state(data: List[Dict], state: Optional[str] = "EXECUTED") -> List[Dict]:
     """
     Фильтрует список словарей по значению ключа 'state'.
 
@@ -8,7 +11,8 @@ def filter_by_state(data: List[Dict], state: Optional[str] = 'EXECUTED') -> List
     :param state: Значение ключа 'state', по которому производится фильтрация.
     :return: Отфильтрованный список словарей.
     """
-    return [item for item in data if item.get('state') == state]
+    return [item for item in data if item.get("state") == state]
+
 
 def sort_by_date(data: List[Dict], descending: bool = True) -> List[Dict]:
     """
@@ -18,4 +22,4 @@ def sort_by_date(data: List[Dict], descending: bool = True) -> List[Dict]:
     :param descending: Порядок сортировки. По умолчанию True (убывание).
     :return: Отсортированный список словарей.
     """
-    return sorted(data, key=lambda x: x.get('date', ''), reverse=descending)
+    return sorted(data, key=lambda x: x.get("date", ""), reverse=descending)

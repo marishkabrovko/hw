@@ -1,8 +1,9 @@
-from src.masks import get_mask_card_number, get_mask_account
+from src.masks import get_mask_account
+from src.masks import get_mask_card_number
 
 
 def mask_account_card(info: str) -> str:
-    """ Маскирует номер карты или счета в зависимости от типа."""
+    """Маскирует номер карты или счета в зависимости от типа."""
     parts = info.split()
     if len(parts) < 2:
         raise ValueError("Invalid input format. Expected 'Type Number'.")
@@ -24,7 +25,8 @@ def mask_account_card(info: str) -> str:
 
 
 def get_date(date_str: str) -> str:
-    """ Преобразует строку с датой из формата "YYYY-MM-DDTHH:MM:SS.mmmmmm" в формат "ДД.ММ.ГГГГ". """
+    """Преобразует строку с датой из формата "YYYY-MM-DDTHH:MM:SS.mmmmmm" в формат "ДД.ММ.ГГГГ"."""
     from datetime import datetime
+
     date_obj = datetime.fromisoformat(date_str)
     return date_obj.strftime("%d.%m.%Y")
