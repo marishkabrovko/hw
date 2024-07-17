@@ -1,9 +1,6 @@
 import unittest
-
-from src.masks import get_mask_account
-from src.masks import get_mask_card_number
-from src.widget import get_date
-from src.widget import mask_account_card
+from src.masks import get_mask_card_number, get_mask_account
+from src.widget import mask_account_card, get_date
 
 
 class TestMasks(unittest.TestCase):
@@ -25,5 +22,5 @@ class TestWidget(unittest.TestCase):
         self.assertEqual(get_date("2024-03-11T02:26:18.671407"), "11.03.2024")
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     unittest.main()

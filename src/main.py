@@ -1,7 +1,5 @@
-from src.masks import get_mask_account
-from src.masks import get_mask_card_number
-from src.widget import get_date
-from src.widget import mask_account_card
+from src.masks import get_mask_card_number, get_mask_account
+from src.widget import mask_account_card, get_date
 
 if __name__ == "__main__":
     card_number = 7000792289606361
