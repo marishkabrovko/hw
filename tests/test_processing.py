@@ -1,10 +1,12 @@
 import pytest
 from src.processing import filter_by_state, sort_by_date
 
+
 def test_filter_by_state(transactions):
     assert len(filter_by_state(transactions)) == 2
     assert len(filter_by_state(transactions, 'CANCELED')) == 2
     assert len(filter_by_state(transactions, 'PENDING')) == 0
+
 
 def test_sort_by_date(transactions):
     sorted_transactions = sort_by_date(transactions)
