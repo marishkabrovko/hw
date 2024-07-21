@@ -84,3 +84,25 @@ poetry run mypy src
 poetry run black src tests
 poetry run isort src tests
 `
+### Новый модуль generators
+`filter_by_currency`
+
+Функция фильтрует транзакции по указанной валюте.
+
+Пример использования:
+
+`from src.generators import filter_by_currency
+transactions = [список транзакций]
+usd_transactions = filter_by_currency(transactions, "USD")
+    for transaction in usd_transactions:
+    print(transaction)`
+
+`transaction_descriptions`
+
+Функция-генератор возвращает описание каждой транзакции.
+
+Пример использования:
+
+`from src.generators import card_number_generator
+for card_number in card_number_generator(1, 5):
+    print(card_number)`
