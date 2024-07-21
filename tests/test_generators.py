@@ -87,6 +87,7 @@ def test_filter_by_currency(sample_transactions):
     usd_transactions = filter_by_currency(sample_transactions, "USD")
     assert next(usd_transactions)["operationAmount"]["currency"]["code"] == "USD"
     assert next(usd_transactions)["operationAmount"]["currency"]["code"] == "USD"
+    assert next(usd_transactions)["operationAmount"]["currency"]["code"] == "USD"
     with pytest.raises(StopIteration):
         next(usd_transactions)
 
@@ -95,6 +96,10 @@ def test_filter_by_currency(sample_transactions):
     assert next(rub_transactions)["operationAmount"]["currency"]["code"] == "RUB"
     with pytest.raises(StopIteration):
         next(rub_transactions)
+
+    empty_transactions = filter_by_currency(sample_transactions, "EUR")
+    with pytest.raises(StopIteration):
+        next(empty_transactions)
 
 
 def test_transaction_descriptions(sample_transactions):
@@ -117,3 +122,12 @@ def test_card_number_generator():
     assert next(card_numbers) == "0000 0000 0000 0005"
     with pytest.raises(StopIteration):
         next(card_numbers)
+
+    card_numbers_large_range = card_number_generator(9999999999999995, 9999999999999999)
+    assert next(card_numbers_large_range) == "9999 9999 9999 9995"
+    assert next(card_numbers_large_range) == "9999 9999 9999 9996"
+    assert next(card_numbers_large_range) == "9999 9999 9999 9997"
+    assert next(card_numbers_large_range) == "9999 9999 9999 9998"
+    assert next(card_numbers_large_range) == "9999 9999 9999 9999"
+    with pytest.raises(StopIteration):
+        next(card_numbers_large_range)
