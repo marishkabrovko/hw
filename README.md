@@ -8,8 +8,8 @@
 
 1. Клонируйте репозиторий:
     
-    git clone <https://github.com/marishkabrovko/hw>
-
+    git clone <URL_вашего_репозитория>
+    cd project_name
     
 
 2. Установите зависимости:
@@ -63,46 +63,3 @@ sort_by_date(data: List[Dict], descending: bool = True) -> List[Dict]`
 `from src.processing import sort_by_date
 sorted_data = sort_by_date(data)
 sorted_data_asc = sort_by_date(data, descending=False)`
-
-### Тестирование
-Запуск тестов
-
-Запустите тесты с отчетом покрытия:
-
-
-`poetry run pytest --cov=src --cov-report=html`
-
-Отчет покрытия тестами
-Отчет покрытия тестами будет сгенерирован в папке htmlcov. Откройте index.html в браузере для просмотра.
-
-### Требования к оформлению кода
-Проект настроен для использования flake8, mypy, black и isort. Убедитесь, что ваш код соответствует требованиям:
-
-`
-poetry run flake8
-poetry run mypy src
-poetry run black src tests
-poetry run isort src tests
-`
-### Новый модуль generators
-`filter_by_currency`
-
-Функция фильтрует транзакции по указанной валюте.
-
-Пример использования:
-
-`from src.generators import filter_by_currency
-transactions = [список транзакций]
-usd_transactions = filter_by_currency(transactions, "USD")
-    for transaction in usd_transactions:
-    print(transaction)`
-
-`transaction_descriptions`
-
-Функция-генератор возвращает описание каждой транзакции.
-
-Пример использования:
-
-`from src.generators import card_number_generator
-for card_number in card_number_generator(1, 5):
-    print(card_number)`
