@@ -1,19 +1,12 @@
-# tests/test_decorators.py
 import pytest
 from src.decorators.log import log
 
 
-@log()
-def test_func_success(x, y):
-    return x + y
-
-
-@log()
-def test_func_error(x, y):
-    raise ValueError("Test error")
-
-
 def test_log_to_console(capsys):
+    @log()
+    def test_func_success(x, y):
+        return x + y
+
     result = test_func_success(1, 2)
     captured = capsys.readouterr()
     assert "test_func_success ok" in captured.out
@@ -21,10 +14,14 @@ def test_log_to_console(capsys):
 
 
 def test_log_to_console_error(capsys):
+    @log()
+    def test_func_error(x, y):
+        raise ValueError("Test error")
+
     with pytest.raises(ValueError, match="Test error"):
         test_func_error(1, 2)
     captured = capsys.readouterr()
-    assert "test_func_error error: Test error. Inputs: (1, 2), {}" in captured.err
+    assert "test_func_error error: Test error. Inputs: (1, 2), {}" in captured.out
 
 
 def test_log_to_file(tmp_path):

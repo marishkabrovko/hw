@@ -3,7 +3,6 @@ import logging
 import sys
 from typing import Callable, Any, Optional
 
-
 def log(filename: Optional[str] = None):
     def decorator_log(func: Callable) -> Callable:
         logger = logging.getLogger(func.__name__)
@@ -14,8 +13,12 @@ def log(filename: Optional[str] = None):
         else:
             handler = logging.StreamHandler(sys.stdout)
 
-        formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+        formatter = logging.Formatter('%(message)s')
         handler.setFormatter(formatter)
+
+        if logger.hasHandlers():
+            logger.handlers.clear()
+
         logger.addHandler(handler)
 
         @functools.wraps(func)
