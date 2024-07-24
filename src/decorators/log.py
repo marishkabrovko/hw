@@ -1,7 +1,9 @@
-import logging
 import functools
+import logging
 import sys
-from typing import Callable, Any, Optional
+from typing import Any
+from typing import Callable
+from typing import Optional
 
 
 def log(filename: Optional[str] = None) -> Callable:
@@ -17,7 +19,7 @@ def log(filename: Optional[str] = None) -> Callable:
                 handler = logging.StreamHandler(sys.stdout)
 
             handler.setLevel(logging.INFO)
-            formatter = logging.Formatter('%(message)s')
+            formatter = logging.Formatter("%(message)s")
             handler.setFormatter(formatter)
             logger.addHandler(handler)
 
@@ -31,5 +33,7 @@ def log(filename: Optional[str] = None) -> Callable:
             finally:
                 logger.removeHandler(handler)
                 handler.close()
+
         return wrapper
+
     return decorator
