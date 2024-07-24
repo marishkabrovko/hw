@@ -1,3 +1,4 @@
+# tests/test_decorators.py
 import pytest
 from src.decorators.log import log
 
@@ -23,7 +24,7 @@ def test_log_to_console_error(capsys):
     with pytest.raises(ValueError, match="Test error"):
         test_func_error(1, 2)
     captured = capsys.readouterr()
-    assert "test_func_error error: Test error. Inputs: (1, 2), {}" in captured.out
+    assert "test_func_error error: Test error. Inputs: (1, 2), {}" in captured.err
 
 
 def test_log_to_file(tmp_path):
