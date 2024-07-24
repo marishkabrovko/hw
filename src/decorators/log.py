@@ -6,7 +6,6 @@ from typing import Callable
 from typing import Optional
 
 
-
 def log(filename: Optional[str] = None) -> Callable:
     def decorator(func: Callable) -> Callable:
         @functools.wraps(func)
