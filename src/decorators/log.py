@@ -1,9 +1,8 @@
-# src/decorators/log.py
-
 import logging
 import functools
 import sys
 from typing import Callable, Any, Optional
+
 
 def log(filename: Optional[str] = None) -> Callable:
     def decorator(func: Callable) -> Callable:

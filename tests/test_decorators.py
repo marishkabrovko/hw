@@ -1,7 +1,6 @@
-# tests/test_decorators.py
-
 import pytest
 from src.decorators.log import log
+
 
 def test_log_to_console(capsys):
     @log()
@@ -11,6 +10,7 @@ def test_log_to_console(capsys):
     result = test_func_success(1, 2)
     captured = capsys.readouterr()
     assert "test_func_success ok" in captured.out
+
 
 def test_log_to_console_error(capsys):
     @log()
