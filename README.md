@@ -104,29 +104,3 @@ usd_transactions = filter_by_currency(transactions, "USD")
 Пример использования:
 
 `from src.generators import card_number_generator
-for card_number in card_number_generator(1, 5):
-    print(card_number)`
-
-### Декоратор `log`
-
-Модуль `decorators` содержит декоратор `log`, который логирует начало и конец выполнения функции, результат или возникшие ошибки.
-
-Пример использования:
-
-
-`from src.decorators.log import log`
-
-`@log(filename="mylog.txt")
-def my_function(x, y):
-    return x + y`
-
-`my_function(1, 2)`
-
-Если filename не задан, логи выводятся в консоль:
-
-
-`@log()
-def my_function(x, y):
-    return x + y`
-
-`my_function(1, 2)`
