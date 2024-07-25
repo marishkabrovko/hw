@@ -105,4 +105,3 @@ usd_transactions = filter_by_currency(transactions, "USD")
 
 `from src.generators import card_number_generator
 for card_number in card_number_generator(1, 5):
-    print(card_number)`
