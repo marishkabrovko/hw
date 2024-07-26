@@ -102,4 +102,27 @@ for transaction in usd_transactions:
 #### transaction_descriptions
 
 Функция-генератор возвращает описание каждой транзакции.
+#### card_number_generator
 
+Генератор выдает номера банковских карт в формате XXXX XXXX XXXX XXXX.
+
+Пример использования:
+
+`from src.generators import card_number_generator
+for card_number in card_number_generator(1, 5):
+    print(card_number)`
+
+### Новый модуль `decorators`
+
+#### Декоратор `log`
+
+Декоратор `log` автоматически логирует начало и конец выполнения функции, а также ее результаты или возникшие ошибки.
+
+Пример использования:
+
+
+`from decorators.log import log
+@log(filename="mylog.txt")
+def my_function(x, y):
+    return x + y
+my_function(1, 2)`
