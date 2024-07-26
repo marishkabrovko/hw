@@ -84,22 +84,34 @@ poetry run mypy src
 poetry run black src tests
 poetry run isort src tests
 `
+
 ### Новый модуль generators
-`filter_by_currency`
+
+#### filter_by_currency
 
 Функция фильтрует транзакции по указанной валюте.
 
 Пример использования:
 
 `from src.generators import filter_by_currency
-transactions = [список транзакций]
+transactions = [# список транзакций]
 usd_transactions = filter_by_currency(transactions, "USD")
-    for transaction in usd_transactions:
+for transaction in usd_transactions:
     print(transaction)`
 
-`transaction_descriptions`
+#### transaction_descriptions
 
 Функция-генератор возвращает описание каждой транзакции.
+
+`from src.generators import transaction_descriptions
+transactions = [ # список транзакций
+]descriptions = transaction_descriptions(transactions)
+for description in descriptions:
+    print(description)`
+
+#### card_number_generator
+
+Генератор выдает номера банковских карт в формате XXXX XXXX XXXX XXXX.
 
 Пример использования:
 
@@ -107,26 +119,17 @@ usd_transactions = filter_by_currency(transactions, "USD")
 for card_number in card_number_generator(1, 5):
     print(card_number)`
 
-### Декоратор `log`
+### Новый модуль `decorators`
 
-Модуль `decorators` содержит декоратор `log`, который логирует начало и конец выполнения функции, результат или возникшие ошибки.
+#### Декоратор `log`
+
+Декоратор `log` автоматически логирует начало и конец выполнения функции, а также ее результаты или возникшие ошибки.
 
 Пример использования:
 
 
-`from src.decorators.log import log`
-
-`@log(filename="mylog.txt")
+`from decorators.log import log
+@log(filename="mylog.txt")
 def my_function(x, y):
-    return x + y`
-
-`my_function(1, 2)`
-
-Если filename не задан, логи выводятся в консоль:
-
-
-`@log()
-def my_function(x, y):
-    return x + y`
-
-`my_function(1, 2)`
+    return x + y
+my_function(1, 2)`
