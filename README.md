@@ -102,3 +102,4 @@ for transaction in usd_transactions:
 #### transaction_descriptions
 
 Функция-генератор возвращает описание каждой транзакции.
+
