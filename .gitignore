@@ -87,7 +87,7 @@ celerybeat-schedule
 .env.production.local
 
 # Editor directories and files
-.idea
+.idea/
 .vscode
 *.swp
 *~
