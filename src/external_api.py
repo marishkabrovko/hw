@@ -1,14 +1,12 @@
 import os
-from typing import Any
-from typing import Dict
-
 import requests
+from typing import Dict, Any
 from dotenv import load_dotenv
 
 load_dotenv()
 
 API_KEY = os.getenv("API_KEY")
-BASE_URL = "http://api.exchangeratesapi.io/v1/latest"
+BASE_URL = "https://api.apilayer.com/exchangerates_data/convert"
 
 
 def convert_to_rub(transaction: Dict[str, Any]) -> float:
@@ -25,11 +23,17 @@ def convert_to_rub(transaction: Dict[str, Any]) -> float:
     if currency == "RUB":
         return amount
 
-    params = {"access_key": API_KEY, "symbols": "RUB", "base": currency}
+    headers = {
+        "apikey": API_KEY
+    }
+    params = {
+        "from": currency,
+        "to": "RUB",
+        "amount": amount
+    }
 
-    response = requests.get(BASE_URL, params=params)
+    response = requests.get(BASE_URL, headers=headers, params=params)
     data = response.json()
-    rates = data.get("rates", {})
-    rub_rate = rates.get("RUB", 1.0)
+    result = data.get("result", 0.0)
 
-    return amount * rub_rate
+    return result
