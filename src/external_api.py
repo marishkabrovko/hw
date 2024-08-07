@@ -1,6 +1,8 @@
 import os
+from typing import Any
+from typing import Dict
+
 import requests
-from typing import Dict, Any
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -23,14 +25,8 @@ def convert_to_rub(transaction: Dict[str, Any]) -> float:
     if currency == "RUB":
         return amount
 
-    headers = {
-        "apikey": API_KEY
-    }
-    params = {
-        "from": currency,
-        "to": "RUB",
-        "amount": amount
-    }
+    headers = {"apikey": API_KEY}
+    params = {"from": currency, "to": "RUB", "amount": amount}
 
     response = requests.get(BASE_URL, headers=headers, params=params)
     data = response.json()
