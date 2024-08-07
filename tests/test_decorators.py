@@ -7,8 +7,6 @@ def test_log_to_console(capsys):
     @log()
     def test_func_success(x: int, y: int) -> int:
         return x + y
-
-    result = test_func_success(1, 2)
     captured = capsys.readouterr()
     assert "test_func_success ok" in captured.out
 
