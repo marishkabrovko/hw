@@ -1,18 +1,20 @@
 import json
 import logging
 import os
-from typing import Any, Dict, List
+from typing import Any
+from typing import Dict
+from typing import List
 
 # Создание и настройка логера
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.DEBUG)
 
 # Создание обработчика для записи логов в файл
-log_file_path = os.path.join('logs', 'utils.log')
-file_handler = logging.FileHandler(log_file_path, mode='w')
+log_file_path = os.path.join("logs", "utils.log")
+file_handler = logging.FileHandler(log_file_path, mode="w")
 
 # Форматирование логов
-formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+formatter = logging.Formatter("%(asctime)s - %(name)s - %(levelname)s - %(message)s")
 file_handler.setFormatter(formatter)
 
 # Добавление обработчика к логеру
@@ -44,7 +46,7 @@ def read_json(file_path: str) -> List[Dict[str, Any]]:
             logger.error(f"Файл не найден: {file_path}")
             return []
 
-        with open(file_path, 'r') as file:
+        with open(file_path, "r") as file:
             data = json.load(file)
             if isinstance(data, list):
                 logger.info(f"Файл успешно прочитан: {file_path}")

@@ -6,11 +6,11 @@ logger = logging.getLogger(__name__)
 logger.setLevel(logging.DEBUG)
 
 # Создание обработчика для записи логов в файл
-log_file_path = os.path.join('logs', 'masks.log')
-file_handler = logging.FileHandler(log_file_path, mode='w')
+log_file_path = os.path.join("logs", "masks.log")
+file_handler = logging.FileHandler(log_file_path, mode="w")
 
 # Форматирование логов
-formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+formatter = logging.Formatter("%(asctime)s - %(name)s - %(levelname)s - %(message)s")
 file_handler.setFormatter(formatter)
 
 # Добавление обработчика к логеру
