@@ -1,7 +1,11 @@
-import pytest
-from unittest.mock import patch, mock_open
+from unittest.mock import mock_open
+from unittest.mock import patch
+
 import pandas as pd
-from src.file_readers import read_transactions_from_csv, read_transactions_from_excel
+import pytest
+
+from src.file_readers import read_transactions_from_csv
+from src.file_readers import read_transactions_from_excel
 
 # Пример данных, которые будут возвращены при чтении CSV
 mock_csv_data = """date,amount,category
@@ -10,11 +14,9 @@ mock_csv_data = """date,amount,category
 """
 
 # Пример данных, которые будут возвращены при чтении Excel
-mock_excel_data = pd.DataFrame({
-    "date": ["2023-08-01", "2023-08-02"],
-    "amount": [1000, 2000],
-    "category": ["groceries", "entertainment"]
-})
+mock_excel_data = pd.DataFrame(
+    {"date": ["2023-08-01", "2023-08-02"], "amount": [1000, 2000], "category": ["groceries", "entertainment"]}
+)
 
 
 # Тест для функции считывания данных из CSV

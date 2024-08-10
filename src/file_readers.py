@@ -1,5 +1,7 @@
+from typing import Dict
+from typing import List
+
 import pandas as pd
-from typing import List, Dict
 
 CSV_FILE_PATH = "data/transactions.csv"
 EXCEL_FILE_PATH = "data/transactions_excel.xlsx"
@@ -17,7 +19,7 @@ def read_transactions_from_csv(file_path: str = CSV_FILE_PATH) -> List[Dict[str,
     """
     try:
         df = pd.read_csv(file_path)
-        return df.to_dict(orient='records')
+        return df.to_dict(orient="records")
     except (FileNotFoundError, pd.errors.EmptyDataError):
         return []
 
@@ -34,6 +36,6 @@ def read_transactions_from_excel(file_path: str = EXCEL_FILE_PATH) -> List[Dict[
     """
     try:
         df = pd.read_excel(file_path)
-        return df.to_dict(orient='records')
+        return df.to_dict(orient="records")
     except (FileNotFoundError, ValueError):
         return []
