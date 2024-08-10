@@ -126,3 +126,15 @@ for card_number in card_number_generator(1, 5):
 def my_function(x, y):
     return x + y
 my_function(1, 2)`
+### Новая функциональность
+
+#### Считывание финансовых операций из CSV и Excel файлов
+
+- Добавлена возможность считывания финансовых операций из CSV- и Excel-файлов с использованием библиотеки `pandas`.
+- Реализованы функции `read_transactions_from_csv` и `read_transactions_from_excel` в модуле `file_readers.py`.
+- По умолчанию функции считывают данные из файлов `data/transactions.csv` и `data/transactions_excel.xlsx` и возвращают список словарей с транзакциями.
+- Если файл не найден или пустой, функция возвращает пустой список.
+
+#### Тестирование
+
+- Написаны тесты для новых функций с использованием `pytest` и `unittest.mock`.
