@@ -1,41 +1,27 @@
-from typing import Dict
-from typing import List
-
+import csv
 import pandas as pd
-
-CSV_FILE_PATH = "data/transactions.csv"
-EXCEL_FILE_PATH = "data/transactions_excel.xlsx"
+from typing import List, Dict
 
 
-def read_transactions_from_csv(file_path: str = CSV_FILE_PATH) -> List[Dict[str, str]]:
-    """
-    Считывает финансовые операции из CSV-файла.
-
-    Args:
-        file_path (str): Путь к CSV-файлу.
-
-    Returns:
-        List[Dict[str, str]]: Список словарей с транзакциями.
-    """
+def read_transactions_from_csv(file_path: str) -> List[Dict[str, str]]:
+    """Считывает транзакции из CSV-файла."""
+    transactions: List[Dict[str, str]] = []
     try:
-        df = pd.read_csv(file_path)
-        return df.to_dict(orient="records")
-    except (FileNotFoundError, pd.errors.EmptyDataError):
-        return []
+        with open(file_path, newline='', encoding='utf-8') as csvfile:
+            reader = csv.DictReader(csvfile)
+            transactions = [dict(row) for row in reader]
+    except FileNotFoundError:
+        print(f"File not found: {file_path}")
+    return transactions
 
 
-def read_transactions_from_excel(file_path: str = EXCEL_FILE_PATH) -> List[Dict[str, str]]:
-    """
-    Считывает финансовые операции из Excel-файла.
-
-    Args:
-        file_path (str): Путь к Excel-файлу.
-
-    Returns:
-        List[Dict[str, str]]: Список словарей с транзакциями.
-    """
+def read_transactions_from_excel(file_path: str) -> List[Dict[str, str]]:
+    """Считывает транзакции из Excel-файла."""
+    transactions: List[Dict[str, str]] = []
     try:
         df = pd.read_excel(file_path)
-        return df.to_dict(orient="records")
-    except (FileNotFoundError, ValueError):
-        return []
+        transactions = df.to_dict(orient='records')
+    except FileNotFoundError:
+        print(f"File not found: {file_path}")
+        transactions = []
+    return transactions

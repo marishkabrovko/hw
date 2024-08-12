@@ -1,5 +1,7 @@
-from src.file_readers import read_transactions_from_csv, read_transactions_from_excel
-from src.analysis import search_transactions_by_description, count_transactions_by_category
+from src.analysis import count_transactions_by_category
+from src.analysis import search_transactions_by_description
+from src.file_readers import read_transactions_from_csv
+from src.file_readers import read_transactions_from_excel
 
 
 def main():
@@ -14,10 +16,10 @@ def main():
 
     if choice == "2":
         print("Для обработки выбран CSV-файл.")
-        transactions = read_transactions_from_csv('data/transactions.csv')
+        transactions = read_transactions_from_csv("data/transactions.csv")
     elif choice == "3":
         print("Для обработки выбран XLSX-файл.")
-        transactions = read_transactions_from_excel('data/transactions_excel.xlsx')
+        transactions = read_transactions_from_excel("data/transactions_excel.xlsx")
 
     if not transactions:
         print("Не удалось загрузить транзакции.")
@@ -27,11 +29,11 @@ def main():
     valid_statuses = ["EXECUTED", "CANCELED", "PENDING"]
 
     while status not in valid_statuses:
-        print(f"Статус операции \"{status}\" недоступен.")
+        print(f'Статус операции "{status}" недоступен.')
         status = input("Программа: Введите статус, по которому необходимо выполнить фильтрацию: ").upper()
 
     transactions = [t for t in transactions if t.get("status", "").upper() == status]
-    print(f"Операции отфильтрованы по статусу \"{status}\"")
+    print(f'Операции отфильтрованы по статусу "{status}"')
 
     if not transactions:
         print("Не найдено ни одной транзакции, подходящей под ваши условия фильтрации.")
@@ -48,7 +50,8 @@ def main():
         transactions = [t for t in transactions if t.get("currency") == "RUB"]
 
     search_filter = input(
-        "Программа: Отфильтровать список транзакций по определенному слову в описании? Да/Нет: ").lower()
+        "Программа: Отфильтровать список транзакций по определенному слову в описании? Да/Нет: "
+    ).lower()
     if search_filter == "да":
         search_word = input("Пользователь: Введите слово для поиска: ")
         transactions = search_transactions_by_description(transactions, search_word)

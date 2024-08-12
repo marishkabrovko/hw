@@ -1,6 +1,7 @@
 import re
 from collections import Counter
-from typing import List, Dict
+from typing import Dict
+from typing import List
 
 
 def search_transactions_by_description(transactions: List[Dict], search_str: str) -> List[Dict]:
